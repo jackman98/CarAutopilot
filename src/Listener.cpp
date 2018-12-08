@@ -1,8 +1,9 @@
 #include "Listener.h"
-
+#include <chrono>
 #include <thread>
 #include <fstream>
 #include "IntersectionGeometryList.h"
+#include "Map.h"
 
 static std::function<void()> bsmHandler;
 static std::function<void()> mapHandler;
@@ -87,7 +88,9 @@ void onSPATMessageReceived(std::shared_ptr<v2x::TrafficLightStatus> tl)
                             }
 
                             if (state == eMovementPhaseState_t::stopAndRemain) {
-                                //TODO: Wait for the green signal
+                                long waitTime = static_cast<long>(movementEvents.at(0)->getMinEndTime().get());
+                                std::this_thread::sleep_for(std::chrono::milliseconds(waitTime));
+                                //TODO: Make a maneuver
                             }
                         }
                     }
