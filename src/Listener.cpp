@@ -8,7 +8,7 @@
 static std::function<void()> bsmHandler;
 static std::function<void()> icaHandler;
 
-extern std::fstream fout;
+extern std::ofstream fout;
 
 void setupSubscriptions()
 {

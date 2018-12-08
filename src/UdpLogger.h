@@ -79,7 +79,7 @@ class UdpLogger
 		void DoLogging()
 		{
 			std::thread t1 (doUdpLogging);
-    		t1.join();
+            t1.detach();
 		}
 };
 

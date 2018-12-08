@@ -1,0 +1,225 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=1
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=2
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=3
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=4
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=5
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4LaneID: 5LaneID: 6MAP msg received intersecCount=1
+intersectionID=6
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=7
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=8
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=9
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=10
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=11
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=12
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=13
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=14
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=1
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=2
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=3
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=4
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=5
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4LaneID: 5LaneID: 6MAP msg received intersecCount=1
+intersectionID=6
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=7
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=8
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=9
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=10
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=11
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=12
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=13
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=14
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=1
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=2
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=3
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=4
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=5
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4LaneID: 5LaneID: 6MAP msg received intersecCount=1
+intersectionID=6
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=7
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=8
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=9
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=10
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=11
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=12
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2LaneID: 3LaneID: 4MAP msg received intersecCount=1
+intersectionID=13
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+LaneID: 1LaneID: 2MAP msg received intersecCount=1
+intersectionID=14
+MAP msg received intersecCount=1
+MAP msg received intersecCount=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=9, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+TrafficLight msg received, (state1)id=6, statesCnt=1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
