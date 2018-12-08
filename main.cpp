@@ -11,8 +11,19 @@
 #include <wiringPi.h>
 #include <ASN1Exch.h>
 
+
+struct StartData
+{
+    std::string lane;
+    size_t targetIntersection;
+};
+
+StartData getStartData();
+
 int main(int argc, char const *argv[])
 {
+    StartData startData = getStartData();
+
     wiringPiSetupGpio();
     Picar car;
     car.init();
@@ -35,4 +46,13 @@ int main(int argc, char const *argv[])
     }
 
     return 0;
+}
+
+
+StartData getStartData()
+{
+    StartData out{};
+    std::cin >> out.lane;
+    std::cin >> out.targetIntersection;
+    return out;
 }
