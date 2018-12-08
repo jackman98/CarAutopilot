@@ -61,7 +61,7 @@ target_link_libraries (main ${picar_LIB} ${wiringPi_LIB} ${asn1_LIB}  ${PYTHON_L
 if(CMAKE_CROSSCOMPILING)
     target_link_libraries (main -L${ROOTFS_PATH}/usr/lib ${asn1_LIB} ${picar_LIB} ${wiringPi_LIB} -L${ROOTFS_PATH}/usr/lib/arm-linux-gnueabihf -lz -lexpat -lcrypt -lrt ${PYTHON_LIBRARIES} )
 else()
-    target_link_libraries (main -lz -lexpat -lpicar -lasn1 -lcrypt -lrt ${wiringPi_LIB} ${PYTHON_LIBRARIES})
+    target_link_libraries (main -lz -lexpat -lpicar -lasn1 -lcrypt -lrt -lpthread ${wiringPi_LIB} ${PYTHON_LIBRARIES})
 endif()
 
 install (TARGETS main DESTINATION bin)

@@ -2,11 +2,17 @@
 
 #include <thread>
 #include <fstream>
-#include <functional>
 #include "IntersectionGeometryList.h"
 
 static std::function<void()> bsmHandler;
+static std::function<void()> mapHandler;
+static std::function<void()> spatmHandler;
+static std::function<void()> evaHandler;
 static std::function<void()> icaHandler;
+
+CIntersectionID currentIntersectionID;
+CLaneID currentLaneID;
+std::shared_ptr<v2x::MapUpdate> mapUpdateForCurrentIntersection;
 
 extern std::ofstream fout;
 
@@ -51,6 +57,8 @@ void onBSMMessageReceived(std::shared_ptr<v2x::Car> car)
 
 void onMAPMessageReceived(std::shared_ptr<v2x::MapUpdate> map)
 {
+    mapUpdateForCurrentIntersection = map;
+
     CIntersectionID intersectionID = map->getIntersectionGeometryLists().front()->get_id().getIntersectionID();
     auto lanes = map->getIntersectionGeometryLists().front()->get_laneSet();
     for (const auto& lane: lanes) {
@@ -66,9 +74,26 @@ void onMAPMessageReceived(std::shared_ptr<v2x::MapUpdate> map)
 
 void onSPATMessageReceived(std::shared_ptr<v2x::TrafficLightStatus> tl)
 {
-    // TODO
-    fout << "TrafficLight msg received, (state1)id=" << (long)tl->getIntersectionState(0)->getIntersectionReferenceID().getIntersectionID().get()
-              << ", statesCnt=" << tl->getIntersectionStates().size() << std::endl;
+    auto intersections = tl->getIntersectionStates();
+    for (auto& intersectionStates: intersections) {
+        if (intersectionStates->getIntersectionReferenceID().getIntersectionID() == currentIntersectionID) {
+            auto enabledLaneList = intersectionStates->getEnabledLaneList();
+                    for (auto& enabledLane: enabledLaneList) {
+                        if (enabledLane == currentLaneID) {
+                            auto movementEvents = intersectionStates->getMovementEventsFoLane(currentLaneID);
+                            auto state = movementEvents.at(0)->getMovementPhaseState();
+
+                            if (state == eMovementPhaseState_t::protectedMovementAllowed) {
+                                //TODO: Make a maneuver
+                            }
+
+                            if (state == eMovementPhaseState_t::stopAndRemain) {
+                                //TODO: Wait for the green signal
+                            }
+                        }
+                    }
+        }
+    }
 }
 
 void onEVAMessageReceived(std::shared_ptr<v2x::EmergencyVehicle> eCar)
@@ -91,13 +116,28 @@ void onICAMessageReceived(std::shared_ptr<v2x::IntersectionCollisionAvoidance> i
     long speed = static_cast<long>(car.getSpeed());
 
     fout << "ICA msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed
-              << " intersectionId=" << intersecId.get() << std::endl;
+         << " intersectionId=" << intersecId.get() << std::endl;
     icaHandler();
 }
 
 void setBSMHandler(std::function<void()> handler)
 {
     bsmHandler = handler;
+}
+
+void setMAPHandler(std::function<void ()> handler)
+{
+    mapHandler = handler;
+}
+
+void setSPATMHandler(std::function<void ()> handler)
+{
+    spatmHandler = handler;
+}
+
+void setEVAHandler(std::function<void ()> handler)
+{
+    evaHandler = handler;
 }
 
 void setICAHandler(std::function<void ()> handler)

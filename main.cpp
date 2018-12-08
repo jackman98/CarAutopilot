@@ -9,9 +9,10 @@
 #include <vector>
 #include <stdexcept>
 #include <wiringPi.h>
-#include "Listener.h"
+#include "CarManager.h"
 #include <fstream>
-#include "src/UdpLogger.h"
+#include <memory>
+#include "UdpLogger.h"
 
 std::ofstream fout;
 
@@ -23,12 +24,13 @@ struct StartData
 
 StartData getStartData();
 
+
 int main(int argc, char const *argv[])
 {
     UdpLog::UdpLogger udpLogger;
     udpLogger.DoLogging();
 
-    StartData startData = getStartData();
+//    StartData startData = getStartData();
 
     fout.open("output.log", std::ios::app);
 
@@ -37,29 +39,28 @@ int main(int argc, char const *argv[])
     }
 
     wiringPiSetupGpio();
-    setupSubscriptions();
 
-    Picar car;
-    car.init();
+    std::shared_ptr<Picar> car(new Picar);
+    car->init();
 
-    setBSMHandler([] () {});
-    setICAHandler([] () {});
+    CarManager carManager(car);
 
     int count = 0;
     while (count < 4) {
         try {
-            car.runToLine();
-            car.moveForward();
-            car.turnLeft();
-            car.runToLine();
+            car->runToLine();
+            car->moveForward();
+            car->turnLeft();
+            car->runToLine();
         } catch(...) {
-            car.stop();
+            car->stop();
             exit(-1);
         }
         ++count;
+        std::cout << count << std::endl;
     }
 
-    car.stop();
+    car->stop();
 
     fout.close();
     return 0;

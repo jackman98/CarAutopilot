@@ -9,13 +9,8 @@
 #define PORT	 8008 
 #define MAXLINE  1024 
 
-
 namespace UdpLog
 {
-	
-
-
-
 static void doUdpLogging()
 {
     std::cout << "starting udp server...\n";
