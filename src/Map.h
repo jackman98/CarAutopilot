@@ -47,10 +47,15 @@ struct LocationInfo
     long progress;
 };
 
-struct ManeuverType
+class Map
 {
+public:
+    Map() = default;
+
+    LocationInfo whereIs(Position position);
+    std::vector<Maneuver> calculateRoute(Position from, Position to);
+
     std::vector<Intersection*> intersections;
     std::vector<Lane*> lanes;
 };
 
-LocationInfo whereIs(Position position);
