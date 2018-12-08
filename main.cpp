@@ -9,7 +9,7 @@
 #include <vector>
 #include <stdexcept>
 #include <wiringPi.h>
-#include <ASN1Exch.h>
+#include "Listener.h"
 
 
 struct StartData
@@ -25,8 +25,13 @@ int main(int argc, char const *argv[])
     StartData startData = getStartData();
 
     wiringPiSetupGpio();
+    setupSubscriptions();
+
     Picar car;
     car.init();
+
+    setBSMHandler([] () {});
+    setICAHandler([] () {});
 
     while (1) {
         try {

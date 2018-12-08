@@ -35,29 +35,26 @@ if(CMAKE_CROSSCOMPILING)
         ${ROOTFS_PATH}/usr/include/
         ${ROOTFS_PATH}/usr/include/v2x
         ${ROOTFS_PATH}/usr/include/v2x/asn_src
-#        ${CMAKE_CURRENT_SOURCE_DIR}/src
         )
     link_directories(${ROOTFS_PATH}/usr/lib)
 else()
     include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/include/
         ${CMAKE_CURRENT_SOURCE_DIR}/include/asn_src
-#        ${CMAKE_CURRENT_SOURCE_DIR}/src
         )
     link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 endif()
 
-#file(GLOB BINARY_SOURCES
-#    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+file(GLOB BINARY_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
-#file(GLOB BINARY_HEADERS
-#    ${CMAKE_CURRENT_SOURCE_DIR}/*.h
-#    )
+file(GLOB BINARY_HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+    )
 
-#set(BINARY_SOURCE_FILES ${BINARY_SOURCES} ${BINARY_HEADERS})
+set(BINARY_SOURCE_FILES ${BINARY_SOURCES} ${BINARY_HEADERS})
 
-#indicate the entry point for the executable
-add_executable (main main.cpp)
+add_executable(main main.cpp ${BINARY_SOURCE_FILES})
 
 # Indicate which libraries to include during the link process.
 target_link_libraries (main ${picar_LIB} ${wiringPi_LIB} ${asn1_LIB}  ${PYTHON_LIBRARIES})
