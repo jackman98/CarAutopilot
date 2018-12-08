@@ -9,12 +9,14 @@
 #include <vector>
 #include <stdexcept>
 #include <wiringPi.h>
+#include <ASN1Exch.h>
 
 int main(int argc, char const *argv[])
 {
     wiringPiSetupGpio();
     Picar car;
     car.init();
+
     while (1) {
         try {
             car.runToLine();
