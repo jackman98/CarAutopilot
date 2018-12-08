@@ -58,4 +58,3 @@ public:
     std::vector<Intersection*> intersections;
     std::vector<Lane*> lanes;
 };
-
