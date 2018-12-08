@@ -10,7 +10,9 @@
 #include <stdexcept>
 #include <wiringPi.h>
 #include "Listener.h"
+#include <fstream>
 
+std::ofstream fout;
 
 struct StartData
 {
@@ -24,6 +26,12 @@ int main(int argc, char const *argv[])
 {
     StartData startData = getStartData();
 
+    fout.open("output.log", std::ios::app);
+
+    if (fout.is_open()) {
+        fout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+    }
+
     wiringPiSetupGpio();
     setupSubscriptions();
 
@@ -33,23 +41,23 @@ int main(int argc, char const *argv[])
     setBSMHandler([] () {});
     setICAHandler([] () {});
 
-    while (1) {
+    int count = 0;
+    while (count < 4) {
         try {
             car.runToLine();
-            std::cout << "enter crossroads: ";
-            char direction;
-            std::cin >> direction;
-            if(direction == 's' || direction == 'e') {
-                car.stop();
-                exit(0);
-            }
-            car.crossroads(static_cast<Picar::eDirection>(direction));
+            car.moveForward();
+            car.turnLeft();
+            car.runToLine();
         } catch(...) {
             car.stop();
             exit(-1);
         }
+        ++count;
     }
 
+    car.stop();
+
+    fout.close();
     return 0;
 }
 

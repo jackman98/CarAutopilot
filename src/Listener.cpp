@@ -1,10 +1,14 @@
 #include "Listener.h"
 
 #include <thread>
+#include <fstream>
 #include <functional>
+#include "IntersectionGeometryList.h"
 
 static std::function<void()> bsmHandler;
 static std::function<void()> icaHandler;
+
+extern std::fstream fout;
 
 void setupSubscriptions()
 {
@@ -41,20 +45,29 @@ void onBSMMessageReceived(std::shared_ptr<v2x::Car> car)
     long lon = static_cast<long>(car->getLongitude());
     long speed = static_cast<long>(car->getSpeed());
 
-    std::cout << "BSM msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed << std::endl;
+    fout << "BSM msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed << std::endl;
     bsmHandler();
 }
 
 void onMAPMessageReceived(std::shared_ptr<v2x::MapUpdate> map)
 {
-    // TODO
-    std::cout << "MAP msg received intersecCnt=" << map->getIntersectionGeometryLists().size() << std::endl;
+    CIntersectionID intersectionID = map->getIntersectionGeometryLists().front()->get_id().getIntersectionID();
+    auto lanes = map->getIntersectionGeometryLists().front()->get_laneSet();
+    for (const auto& lane: lanes) {
+        fout << "LaneID: " << lane->get_laneID().get();
+    }
+
+    fout << "MAP msg received intersecCount=" << map->getIntersectionGeometryLists().size() << std::endl;
+    fout << "intersectionID=" << intersectionID.get() << std::endl;
+    fout << "MAP msg received intersecCount=" << map->getIntersectionGeometryLists().size() << std::endl;
+    fout << "MAP msg received intersecCount=" << map->getIntersectionGeometryLists().size() << std::endl;
+
 }
 
 void onSPATMessageReceived(std::shared_ptr<v2x::TrafficLightStatus> tl)
 {
     // TODO
-    std::cout << "TrafficLight msg received, (state1)id=" << (long)tl->getIntersectionState(0)->getIntersectionReferenceID().getIntersectionID().get()
+    fout << "TrafficLight msg received, (state1)id=" << (long)tl->getIntersectionState(0)->getIntersectionReferenceID().getIntersectionID().get()
               << ", statesCnt=" << tl->getIntersectionStates().size() << std::endl;
 }
 
@@ -65,7 +78,7 @@ void onEVAMessageReceived(std::shared_ptr<v2x::EmergencyVehicle> eCar)
     long lon = static_cast<long>(eCar->getLongitude());
     long speed = static_cast<long>(eCar->getSpeed());
 
-    std::cout << "EVA msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed << std::endl;
+    fout << "EVA msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed << std::endl;
 }
 
 void onICAMessageReceived(std::shared_ptr<v2x::IntersectionCollisionAvoidance> icCar)
@@ -77,7 +90,7 @@ void onICAMessageReceived(std::shared_ptr<v2x::IntersectionCollisionAvoidance> i
     long lon = static_cast<long>(car.getLongitude());
     long speed = static_cast<long>(car.getSpeed());
 
-    std::cout << "ICA msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed
+    fout << "ICA msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed
               << " intersectionId=" << intersecId.get() << std::endl;
     icaHandler();
 }
