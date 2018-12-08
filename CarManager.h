@@ -9,19 +9,14 @@ class CarManager
 public:
     CarManager(std::shared_ptr<Picar> picar);
 
-    Longitude_t longitude() const;
-    void setLongitude(const Longitude_t &longitude);
-
-    Latitude_t latitude() const;
-    void setLatitude(const Latitude_t &latitude);
-
     std::shared_ptr<Picar> picar() const;
 
-private:
-    Longitude_t m_longitude;
-    Latitude_t m_latitude;
+    std::shared_ptr<v2x::Car> car() const;
+    void setCar(const std::shared_ptr<v2x::Car> &car);
 
+private:
     std::shared_ptr<Picar> m_picar;
+    std::shared_ptr<v2x::Car> m_car;
 };
 
 #endif // CAR_MANAGER_H

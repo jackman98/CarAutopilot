@@ -57,9 +57,11 @@ void onBSMMessageReceived(std::shared_ptr<v2x::Car> car)
 
 void onMAPMessageReceived(std::shared_ptr<v2x::MapUpdate> map)
 {
-    mapUpdateForCurrentIntersection = map;
-
     CIntersectionID intersectionID = map->getIntersectionGeometryLists().front()->get_id().getIntersectionID();
+    if (intersectionID == currentIntersectionID) {
+        mapUpdateForCurrentIntersection = map;
+    }
+
     auto lanes = map->getIntersectionGeometryLists().front()->get_laneSet();
     for (const auto& lane: lanes) {
         fout << "LaneID: " << lane->get_laneID().get();
@@ -67,9 +69,6 @@ void onMAPMessageReceived(std::shared_ptr<v2x::MapUpdate> map)
 
     fout << "MAP msg received intersecCount=" << map->getIntersectionGeometryLists().size() << std::endl;
     fout << "intersectionID=" << intersectionID.get() << std::endl;
-    fout << "MAP msg received intersecCount=" << map->getIntersectionGeometryLists().size() << std::endl;
-    fout << "MAP msg received intersecCount=" << map->getIntersectionGeometryLists().size() << std::endl;
-
 }
 
 void onSPATMessageReceived(std::shared_ptr<v2x::TrafficLightStatus> tl)
