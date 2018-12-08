@@ -11,6 +11,7 @@
 #include <wiringPi.h>
 #include "Listener.h"
 #include <fstream>
+#include "src/UdpLogger.h"
 
 std::ofstream fout;
 
@@ -24,6 +25,9 @@ StartData getStartData();
 
 int main(int argc, char const *argv[])
 {
+    UdpLog::UdpLogger udpLogger;
+    udpLogger.DoLogging();
+
     StartData startData = getStartData();
 
     fout.open("output.log", std::ios::app);
