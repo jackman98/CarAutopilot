@@ -85,21 +85,18 @@ Vec2 projection(Vec2 const& a, Vec2 const& b, Vec2 const& x)
     return a + vn * f;
 }
 
-LocationInfo Map::whereIs(Position position)
+std::vector<LocationInfo> Map::whereIs(Position position)
 {
-    LocationInfo result{};
-    result.lane = nullptr;
-    
+    std::vector<LocationInfo> result{};
+
     // may change to fastest algorithm
-    long min_distance = LONG_MAX;
     for (auto const& lane : lanes)
     {
         auto distance = distanceToLane(position, lane);
-        if (distance.first < min_distance && distance.first <= THRESHOLD_POSITION)
+        if (distance.first <= THRESHOLD_POSITION)
         {
-            min_distance = distance.first;
-            result.lane = &lane;
-            result.progress = distance.second;
+            LocationInfo info{ &lane, distance.second };
+            result.push_back(info);
         }
     }
 

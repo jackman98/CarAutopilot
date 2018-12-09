@@ -52,7 +52,7 @@ class Map
 public:
     Map() = default;
 
-    LocationInfo whereIs(Position position);
+    std::vector<LocationInfo> whereIs(Position position);
     std::vector<Maneuver> calculateRoute(Position from, Position to);
 
     std::pair<long, long> distanceToLane(Position position, Lane const& lane) const;
