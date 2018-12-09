@@ -17,13 +17,13 @@ enum class ManeuverType : int
 struct Position
 {
     long latitude;
-    long longtude;
+    long longitude;
 };
 
 struct Lane 
 {
-    Position begin, end;
-    Lane* parallelLane = nullptr;
+    Position begin{}, end{};
+    Lane const* parallelLane = nullptr;
     Intersection* source = nullptr;
     Intersection* target = nullptr;
 };
@@ -38,12 +38,12 @@ struct Intersection
 struct Maneuver
 {
     ManeuverType type;
-    Intersection* intersection;
+    Intersection const* intersection;
 };
 
 struct LocationInfo
 {
-    Lane* lane;
+    Lane const* lane;
     long progress;
 };
 
@@ -55,6 +55,10 @@ public:
     LocationInfo whereIs(Position position);
     std::vector<Maneuver> calculateRoute(Position from, Position to);
 
-    std::vector<Intersection*> intersections;
-    std::vector<Lane*> lanes;
+    std::pair<long, long> distanceToLane(Position position, Lane const& lane) const;
+
+    std::vector<Intersection> intersections;
+    std::vector<Lane> lanes;
+
+    long const THRESHOLD_POSITION = 10;
 };
