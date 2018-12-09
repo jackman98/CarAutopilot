@@ -4,16 +4,6 @@
 #include <climits>
 #include <iostream>
 
-
-bool inRange(double value, double a, double b)
-{
-    if (a > b)
-    {
-        return value >= b && value <= a;
-    }
-    return value >= a && value <= b;
-}
-
 struct Vec2
 {
     Vec2() = default;
@@ -84,6 +74,11 @@ Vec2 projection(Vec2 const& a, Vec2 const& b, Vec2 const& x)
     Vec2 vn = v.normalized();
     double f = scalarMult(vn, x - a);
     return a + vn * f;
+}
+
+long Lane::getDistance() const
+{
+    return static_cast<long>((Vec2(end) - Vec2(begin)).len());
 }
 
 std::vector<LocationInfo> Map::whereIs(Position position)
