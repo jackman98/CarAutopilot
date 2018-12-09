@@ -27,7 +27,6 @@ struct Lane
     Lane const* parallelLane = nullptr;
     Intersection const* source = nullptr;
     Intersection const* target = nullptr;
-    bool isRight = false;
 };
 
 struct Intersection
