@@ -2,17 +2,24 @@
 #define CAR_MANAGER_H
 #include <ASN1Exch.h>
 #include <picar.h>
-#include "Listener.h"
 
 class CarManager
 {
 public:
-    CarManager(std::shared_ptr<Picar> picar);
+    CarManager();
+
+    static CarManager& getInstance() {
+        static CarManager instance;
+        return instance;
+    }
 
     std::shared_ptr<Picar> picar() const;
+    void setPicar(const std::shared_ptr<Picar> &picar);
 
     std::shared_ptr<v2x::Car> car() const;
     void setCar(const std::shared_ptr<v2x::Car> &car);
+
+    static void processEVAEvent(std::shared_ptr<v2x::EmergencyVehicle>& eCar);
 
 private:
     std::shared_ptr<Picar> m_picar;

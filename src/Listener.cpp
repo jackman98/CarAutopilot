@@ -5,11 +5,11 @@
 #include "IntersectionGeometryList.h"
 #include "Map.h"
 
-static std::function<void()> bsmHandler;
-static std::function<void()> mapHandler;
-static std::function<void()> spatmHandler;
-static std::function<void()> evaHandler;
-static std::function<void()> icaHandler;
+static BsmHandler bsmHandler;
+static MapHandler mapHandler;
+static SpatmHandler spatmHandler;
+static EvaHandler evaHandler;
+static IcaHandler icaHandler;
 
 CIntersectionID currentIntersectionID;
 CLaneID currentLaneID;
@@ -100,12 +100,7 @@ void onSPATMessageReceived(std::shared_ptr<v2x::TrafficLightStatus> tl)
 
 void onEVAMessageReceived(std::shared_ptr<v2x::EmergencyVehicle> eCar)
 {
-    CTempId tId = eCar->getTempId();
-    long lat = static_cast<long>(eCar->getLatitude());
-    long lon = static_cast<long>(eCar->getLongitude());
-    long speed = static_cast<long>(eCar->getSpeed());
-
-    fout << "EVA msg received id=" << tId.toString().c_str() << " lat=" << lat << " lon=" << lon << " speed=" << speed << std::endl;
+    evaHandler(eCar);
 }
 
 void onICAMessageReceived(std::shared_ptr<v2x::IntersectionCollisionAvoidance> icCar)
@@ -122,27 +117,27 @@ void onICAMessageReceived(std::shared_ptr<v2x::IntersectionCollisionAvoidance> i
     icaHandler();
 }
 
-void setBSMHandler(std::function<void()> handler)
+void setBSMHandler(BsmHandler handler)
 {
     bsmHandler = handler;
 }
 
-void setMAPHandler(std::function<void ()> handler)
+void setMAPHandler(MapHandler handler)
 {
     mapHandler = handler;
 }
 
-void setSPATMHandler(std::function<void ()> handler)
+void setSPATMHandler(SpatmHandler handler)
 {
     spatmHandler = handler;
 }
 
-void setEVAHandler(std::function<void ()> handler)
+void setEVAHandler(EvaHandler handler)
 {
     evaHandler = handler;
 }
 
-void setICAHandler(std::function<void ()> handler)
+void setICAHandler(IcaHandler handler)
 {
     icaHandler = handler;
 }

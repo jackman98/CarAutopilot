@@ -13,6 +13,7 @@
 #include <fstream>
 #include <memory>
 #include "UdpLogger.h"
+#include "Listener.h"
 
 std::ofstream fout;
 
@@ -23,7 +24,6 @@ struct StartData
 };
 
 StartData getStartData();
-
 
 int main(int argc, char const *argv[])
 {
@@ -37,30 +37,32 @@ int main(int argc, char const *argv[])
     if (fout.is_open()) {
         fout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     }
-
     wiringPiSetupGpio();
+    setupSubscriptions();
 
-    std::shared_ptr<Picar> car(new Picar);
-    car->init();
+    CarManager* carManager = &CarManager::getInstance();
 
-    CarManager carManager(car);
+    std::shared_ptr<Picar> picar(new Picar);
+    picar->init();
+
+    carManager->setPicar(picar);
 
     int count = 0;
     while (count < 4) {
         try {
-            car->runToLine();
-            car->moveForward();
-            car->turnLeft();
-            car->runToLine();
+            picar->runToLine();
+            picar->moveForward();
+            picar->turnLeft();
+            picar->runToLine();
         } catch(...) {
-            car->stop();
+            picar->stop();
             exit(-1);
         }
         ++count;
         std::cout << count << std::endl;
     }
 
-    car->stop();
+    picar->stop();
 
     fout.close();
     return 0;
