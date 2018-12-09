@@ -22,6 +22,7 @@ struct Position
 
 struct Lane 
 {
+    long id = 0;
     Position begin{}, end{};
     Lane const* parallelLane = nullptr;
     Intersection* source = nullptr;
