@@ -2,6 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <climits>
+#include <iostream>
 
 
 bool inRange(double value, double a, double b)
@@ -116,9 +117,9 @@ std::pair<long, long> Map::distanceToLane(Position position, Lane const& lane) c
     Vec2 p(position), a(lane.begin), b(lane.end);
     Vec2 xp = projection(a, b, p);
     
-    double len = (a- b).squadLen();
-    double da = (a - xp).squadLen();
-    double db = (b - xp).squadLen();  
+    double len = (a- b).len();
+    double da = (a - xp).len();
+    double db = (b - xp).len();  
 
     if (da > len || db > len)
     {
@@ -137,7 +138,7 @@ std::pair<long, long> Map::distanceToLane(Position position, Lane const& lane) c
     }
     else
     {
-        distance = static_cast<long>(std::min(da, db));
+        distance = static_cast<long>((xp - p).len());
         progress = static_cast<long>(da / len * 100);
     }
 
